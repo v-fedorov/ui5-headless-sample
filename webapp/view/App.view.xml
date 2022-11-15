@@ -1,0 +1,50 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:f="sap.f" controllerName="sap.ui.demo.todo.controller.App" displayBlock="true">
+		<App>
+			<Page>
+				<customHeader>
+					<f:ShellBar core:require="{ Helper: 'sap/ui/demo/todo/util/Helper' }" title="{i18n>TITLE}" homeIcon="{:= Helper.resolvePath('./img/logo_ui5.png') }" />
+				</customHeader>
+				<content>
+					<f:DynamicPage>
+						<f:header>
+							<f:DynamicPageHeader pinnable="false">
+								<SearchField
+										id="searchField"
+										width="50%"
+										placeholder="Search for..."
+										enableSuggestions="true"
+										search=".onSearch"
+										suggest=".onSuggest"
+										suggestionItems="{
+											path: '/Suggestions',
+											sorter: { path: 'Name' }
+										}">
+									<SuggestionItem text="{displayValue}" description="{path:'displayValue'} {path:'count'}" key="{rawValue}" />
+								</SearchField>
+							</f:DynamicPageHeader>
+						</f:header>
+						<f:content>
+
+							<List id="todoList"
+								items="{ path: '/SearchResults', events: {} }"
+								mode="None"
+								growing="true"
+								growingScrollToLoad="true"
+								showNoData="false"
+								showSeparators="None">
+								<StandardListItem
+										title="{title}"
+										description="{title}"
+										icon="{title}"
+										iconDensityAware="false"
+										iconInset="false" />
+
+							</List>
+
+						</f:content>
+					</f:DynamicPage>
+				</content>
+
+			</Page>
+		</App>
+</mvc:View>

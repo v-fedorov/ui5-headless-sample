@@ -1,0 +1,29 @@
+specVersion: '2.0'
+metadata:
+  name: openui5-sample-app
+type: application
+framework:
+  name: OpenUI5
+  version: "1.107.1"
+  libraries:
+    - name: sap.f
+    - name: sap.m
+    - name: sap.ui.core
+    - name: themelib_sap_fiori_3
+---
+specVersion: "2.5"
+kind: extension
+type: project-shim
+metadata:
+  name: ui5-ts-shim-showcase.thirdparty
+shims:
+  configurations:
+    "@coveo/headless":
+      specVersion: "2.5"
+      type: module
+      metadata:
+        name: "@coveo/headless"
+      resources:
+        configuration:
+          paths:
+            "/resources/@coveo/headless/": ""
